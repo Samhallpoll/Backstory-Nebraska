@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Backstory Nebraska — The Full Story of the Cornhusker State</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── MOBILE-FIRST BASE (applies to ALL screen sizes including iMessage browser) ── */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+:root {
+  --navy:   #0D1F35;
+  --navy2:  #112640;
+  --navy3:  #1A3A5C;
+  --gold:   #C8922A;
+  --gold2:  #E0A83A;
+  --red:    #C23B3B;
+  --slate:  #7A9AB8;
+  --border: rgba(200,146,42,0.18);
+  --ff-d: 'Playfair Display', Georgia, serif;
+  --ff-b: 'DM Sans', system-ui, sans-serif;
+  --ff-m: 'DM Mono', monospace;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--ff-b); background: var(--navy); color: #E2D8C8; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* NOISE TEXTURE */
+body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:.6; }
+
+/* ── WILDFIRE BANNER ── */
+.fire-banner { background:linear-gradient(90deg,#8B1A1A,#C23B3B,#8B1A1A); background-size:200% 100%; animation:fire-pulse 4s ease-in-out infinite; border-bottom:2px solid #FF6B35; position:relative; z-index:150; overflow:hidden; }
+@keyframes fire-pulse { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+.fire-banner-inner { width:100%; padding:0 16px; height:40px; display:flex; align-items:center; gap:12px; }
+.fire-alert-badge { background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.25); border-radius:2px; padding:3px 8px; font-size:9px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:#fff; white-space:nowrap; display:flex; align-items:center; gap:5px; flex-shrink:0; }
+.fire-flame { animation:flicker .8s ease-in-out infinite alternate; }
+@keyframes flicker { 0%{opacity:1;transform:scale(1)} 100%{opacity:.7;transform:scale(1.1)} }
+.fire-banner-text { flex:1; overflow:hidden; white-space:nowrap; }
+.fire-banner-scroll { display:inline-flex; gap:40px; animation:fire-scroll 25s linear infinite; }
+.fbs-item { display:inline-flex; align-items:center; gap:8px; color:#fff; font-size:11px; font-weight:500; }
+.fbs-label { font-weight:700; color:#FFB347; }
+.fire-banner-cta { display:none; }
+@keyframes fire-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ── TICKER ── */
+.ticker-bar { background:var(--gold); color:var(--navy); height:28px; display:flex; align-items:center; overflow:hidden; z-index:200; font-family:var(--ff-m); font-size:10px; }
+.ticker-label { background:var(--navy); color:var(--gold); padding:0 10px; height:100%; display:flex; align-items:center; font-size:8px; letter-spacing:.15em; text-transform:uppercase; font-weight:500; flex-shrink:0; gap:5px; }
+.t-dot { width:5px; height:5px; border-radius:50%; background:var(--red); animation:blink 1.2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+.ticker-wrap { overflow:hidden; flex:1; }
+.ticker-track { display:flex; animation:scroll-ticker 55s linear infinite; width:max-content; }
+.t-item { display:inline-flex; align-items:center; gap:6px; padding:0 24px 0 0; white-space:nowrap; }
+.t-sym { font-weight:600; color:var(--navy); font-size:10px; }
+.t-name { color:rgba(13,31,53,.7); font-size:9px; }
+.t-val { font-weight:600; }
+.t-chg { font-size:9px; }
+.up { color:#1a6b30; }
+.dn { color:#9a1a1a; }
+.t-divider { color:rgba(13,31,53,.35); padding:0 6px; }
+@keyframes scroll-ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ── MASTHEAD ── */
+.masthead { position:sticky; top:0; z-index:100; border-bottom:1px solid var(--border); background:rgba(13,31,53,.97); backdrop-filter:blur(16px); }
+.mast-inner { width:100%; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.nav-left { display:none; }
+.logo-block { flex:1; text-align:center; }
+.logo-word { font-family:var(--ff-d); font-size:16px; font-weight:900; color:#fff; letter-spacing:.04em; line-height:1; }
+.logo-tag { font-size:6.5px; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-top:2px; opacity:.9; }
+.nav-right { display:flex; align-items:center; gap:8px; }
+.nav-right a:not(.gcp-link):not(.btn-sub) { display:none; }
+.gcp-link { display:flex; align-items:center; gap:5px; font-size:9px; font-weight:600; letter-spacing:.06em; color:var(--gold) !important; border:1px solid rgba(200,146,42,.3); padding:5px 9px; border-radius:2px; }
+.gcp-link img { width:14px; height:14px; border-radius:50%; object-fit:cover; background:#112640; }
+.btn-sub { background:var(--gold); color:var(--navy); font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 11px; border-radius:2px; white-space:nowrap; }
+
+/* ── HERO ── */
+.hero { position:relative; overflow:hidden; padding-bottom:0; }
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 60% 30%, rgba(26,58,92,.7) 0%, transparent 70%), linear-gradient(170deg, #0a1825 0%, #0d1f35 40%, #0f2238 100%); z-index:0; }
+.hero-grid-lines { position:absolute; inset:0; z-index:1; opacity:.03; background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px); background-size:60px 60px; }
+.hero-accent { display:none; }
+.hero-eyebrow { position:relative; z-index:10; display:flex; align-items:center; justify-content:center; gap:10px; padding:20px 16px 0; }
+.hero-date { font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:var(--slate); font-family:var(--ff-m); }
+.hero-divline { width:30px; height:1px; background:var(--border); }
+
+/* Hero content — SINGLE COLUMN by default */
+.hero-content { position:relative; z-index:5; width:100%; padding:24px 16px 0; display:flex; flex-direction:column; gap:24px; }
+.hero-kicker { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.hero-kicker::before { content:''; display:block; width:20px; height:1px; background:var(--gold); }
+.hero-headline { font-family:var(--ff-d); font-size:30px; font-weight:900; line-height:1.05; color:#fff; margin-bottom:14px; }
+.hero-headline em { font-style:italic; color:var(--gold2); }
+.hero-deck { font-size:14px; line-height:1.65; color:rgba(226,216,200,.7); margin-bottom:20px; font-weight:300; }
+.hero-actions { display:flex; flex-direction:column; gap:10px; }
+.btn-primary { background:var(--gold); color:var(--navy); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:13px 22px; border-radius:2px; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+.btn-secondary { font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); border:1px solid rgba(122,154,184,.3); padding:12px 22px; border-radius:2px; text-align:center; }
+
+/* Breaking box */
+.breaking-box { background:rgba(17,38,64,.7); border:1px solid var(--border); border-radius:4px; overflow:hidden; }
+.breaking-header { background:var(--red); padding:9px 14px; display:flex; align-items:center; gap:7px; font-size:9px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#fff; }
+.breaking-dot { width:5px; height:5px; border-radius:50%; background:#fff; animation:blink 1s infinite; }
+.breaking-item { padding:12px 14px; border-bottom:1px solid rgba(200,146,42,.08); cursor:pointer; }
+.breaking-item:last-child { border-bottom:none; }
+.b-cat { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; font-weight:600; }
+.b-hed { font-size:13px; font-weight:600; line-height:1.35; color:#fff; }
+.b-time { font-size:10px; color:var(--slate); margin-top:4px; font-family:var(--ff-m); }
+
+/* Hero bottom trending bar — hidden on mobile */
+.hero-trend-bar { display:none; }
+
+/* ── SECTION RULE ── */
+.section-rule { padding:0 16px; }
+.rule-inner { border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:16px 0 0; }
+.rule-label { font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:8px; }
+.rule-label::before { content:''; display:block; width:16px; height:1px; background:var(--gold); }
+.rule-more { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); display:flex; align-items:center; gap:4px; }
+.rule-more::after { content:'→'; }
+
+/* ── CONTENT STRIP — 1 col mobile ── */
+.content-strip { padding:0 0 36px; }
+.strip-inner { padding:16px 16px 0; }
+.strip-grid { display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden; margin-top:16px; }
+.strip-card { background:var(--navy2); padding:16px; }
+.sc-cat { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; font-weight:600; }
+.sc-hed { font-family:var(--ff-d); font-size:16px; font-weight:700; line-height:1.3; color:#fff; margin-bottom:8px; }
+.sc-deck { font-size:12px; line-height:1.6; color:rgba(226,216,200,.6); margin-bottom:10px; }
+.sc-meta { font-size:10px; color:var(--slate); font-family:var(--ff-m); display:flex; align-items:center; gap:6px; }
+.sc-dot { width:3px; height:3px; border-radius:50%; background:var(--slate); }
+
+/* ── MAIN GRID — stacked mobile ── */
+.main-section { padding:0 0 40px; }
+.main-inner { padding:0 16px; }
+.main-grid { display:flex; flex-direction:column; gap:24px; margin-top:20px; }
+
+/* Feature cards — 1 col */
+.feature-grid { display:flex; flex-direction:column; gap:14px; }
+.feature-card { background:var(--navy2); border:1px solid rgba(200,146,42,.1); border-radius:4px; overflow:hidden; cursor:pointer; }
+.feature-card.big { } /* same on mobile */
+.fc-img { height:150px; background:linear-gradient(135deg,var(--navy3),var(--navy2)); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.fc-img-label { font-family:var(--ff-d); font-size:34px; font-weight:900; color:rgba(200,146,42,.08); }
+.fc-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(13,31,53,.8) 0%,transparent 60%); }
+.fc-body { padding:14px 14px 16px; }
+.fc-cat { font-size:9px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:7px; font-weight:600; }
+.fc-cat.sports{color:#4A90D9} .fc-cat.ag{color:#6BAF5A} .fc-cat.biz{color:#D4A843} .fc-cat.culture{color:#B87DD4} .fc-cat.outdoors{color:#5BAF8A} .fc-cat.news{color:var(--red)}
+.fc-hed { font-family:var(--ff-d); font-size:16px; font-weight:700; line-height:1.25; color:#fff; margin-bottom:8px; }
+.fc-deck { font-size:12px; line-height:1.6; color:rgba(226,216,200,.6); margin-bottom:10px; }
+.fc-meta { font-size:10px; color:var(--slate); font-family:var(--ff-m); display:flex; align-items:center; gap:6px; }
+.fc-author { color:var(--gold); font-weight:500; }
+.by-dot { width:3px; height:3px; border-radius:50%; background:var(--slate); }
+
+/* Sidebar — full width stacked */
+.sidebar { width:100%; }
+.sidebar-module { background:var(--navy2); border:1px solid rgba(200,146,42,.1); border-radius:4px; overflow:hidden; margin-bottom:16px; }
+.sm-header { padding:11px 14px; border-bottom:1px solid rgba(200,146,42,.1); display:flex; align-items:center; justify-content:space-between; }
+.sm-title { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:600; display:flex; align-items:center; gap:7px; }
+.sm-title-icon { font-size:11px; }
+.sm-link { font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); }
+.contributor-list,.podcast-list,.market-list { padding:4px 0; }
+.contributor-item,.podcast-item,.market-item { padding:11px 14px; border-bottom:1px solid rgba(200,146,42,.06); display:flex; align-items:center; gap:10px; cursor:pointer; }
+.contributor-item:last-child,.podcast-item:last-child,.market-item:last-child { border-bottom:none; }
+.contrib-avatar { width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--navy3),var(--gold)); display:flex; align-items:center; justify-content:center; font-family:var(--ff-d); font-size:13px; font-weight:700; color:var(--gold); flex-shrink:0; border:1.5px solid rgba(200,146,42,.3); }
+.contrib-info { flex:1; min-width:0; }
+.contrib-name { font-size:13px; font-weight:600; color:#fff; line-height:1; }
+.contrib-role { font-size:10px; color:var(--slate); margin-top:2px; }
+.contrib-tag { font-size:9px; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:10px; font-weight:600; flex-shrink:0; }
+.tag-featured { background:rgba(200,146,42,.15); color:var(--gold); }
+.tag-new { background:rgba(194,59,59,.15); color:var(--red); }
+.tag-live { background:rgba(42,107,74,.2); color:#5BAF8A; }
+.pod-art { width:40px; height:40px; border-radius:3px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:16px; }
+.pod-art.sports{background:linear-gradient(135deg,#1a3a6a,#2a5a9a)} .pod-art.ag{background:linear-gradient(135deg,#1a3a1a,#2a6b2a)} .pod-art.biz{background:linear-gradient(135deg,#3a2a0a,#6b4a1a)} .pod-art.culture{background:linear-gradient(135deg,#2a1a3a,#5a2a7a)}
+.pod-info { flex:1; min-width:0; }
+.pod-show { font-size:11px; font-weight:600; color:#fff; line-height:1; }
+.pod-ep { font-size:10px; color:var(--slate); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.pod-dur { font-size:9px; font-family:var(--ff-m); color:rgba(200,180,150,.5); }
+.play-btn { width:28px; height:28px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:10px; color:var(--navy); padding-left:2px; }
+.mkt-left { display:flex; flex-direction:column; gap:2px; }
+.mkt-sym { font-size:12px; font-weight:700; color:#fff; font-family:var(--ff-m); }
+.mkt-name { font-size:10px; color:var(--slate); }
+.mkt-right { text-align:right; margin-left:auto; }
+.mkt-val { font-size:12px; font-weight:600; color:#fff; font-family:var(--ff-m); }
+.mkt-chg { font-size:10px; font-family:var(--ff-m); }
+
+/* ── VIDEO ROW — 1 col mobile ── */
+.video-section { padding:0 0 40px; }
+.video-inner { padding:0 16px; }
+.video-row { display:flex; flex-direction:column; gap:14px; margin-top:16px; }
+.video-card { background:var(--navy2); border:1px solid rgba(200,146,42,.1); border-radius:4px; overflow:hidden; cursor:pointer; }
+.vc-thumb { height:175px; background:linear-gradient(135deg,#0a1825,#1a3a5c); position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.vc-thumb-label { font-family:var(--ff-d); font-size:34px; font-weight:900; color:rgba(200,146,42,.1); }
+.vc-play { position:absolute; width:48px; height:48px; border-radius:50%; background:rgba(200,146,42,.9); display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--navy); padding-left:4px; }
+.vc-duration { position:absolute; bottom:8px; right:10px; background:rgba(0,0,0,.7); font-family:var(--ff-m); font-size:10px; color:#fff; padding:2px 6px; border-radius:2px; }
+.vc-platform { position:absolute; top:10px; left:10px; background:rgba(0,0,0,.6); font-size:9px; letter-spacing:.1em; padding:3px 8px; border-radius:2px; color:rgba(255,255,255,.8); text-transform:uppercase; }
+.vc-body { padding:14px; }
+.vc-cat { font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; font-weight:600; }
+.vc-title { font-size:14px; font-weight:600; color:#fff; line-height:1.3; margin-bottom:5px; }
+.vc-meta { font-size:10px; color:var(--slate); font-family:var(--ff-m); }
+
+/* ── VERTICALS — 2 col mobile ── */
+.verticals-section { padding:0 0 40px; }
+.verticals-inner { padding:0 16px; }
+.verticals-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+.vertical-card { border:1px solid rgba(200,146,42,.12); border-radius:4px; padding:16px 14px; cursor:pointer; background:var(--navy2); position:relative; overflow:hidden; }
+.vertical-card::before { content:''; position:absolute; inset:0; opacity:0; }
+.vc-ag::before{background:linear-gradient(135deg,rgba(42,107,42,.15),transparent)} .vc-sports::before{background:linear-gradient(135deg,rgba(30,80,180,.15),transparent)} .vc-biz::before{background:linear-gradient(135deg,rgba(180,140,30,.15),transparent)} .vc-culture::before{background:linear-gradient(135deg,rgba(140,60,180,.15),transparent)} .vc-outdoors::before{background:linear-gradient(135deg,rgba(42,107,74,.15),transparent)}
+.v-icon { font-size:24px; margin-bottom:10px; display:block; }
+.v-name { font-family:var(--ff-d); font-size:15px; font-weight:700; color:#fff; margin-bottom:5px; }
+.v-count { font-size:10px; color:var(--slate); margin-bottom:8px; }
+.v-tags { display:flex; flex-wrap:wrap; gap:4px; }
+.v-tag { font-size:8px; padding:2px 6px; border-radius:10px; background:rgba(200,146,42,.1); color:var(--gold); }
+
+/* ── SIGNALS — 1 col mobile ── */
+.signal-section { padding:0 0 40px; }
+.signal-inner { padding:0 16px; }
+.signal-grid { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+.signal-card { background:var(--navy2); border:1px solid rgba(200,146,42,.1); border-radius:4px; padding:16px; cursor:pointer; }
+.sig-type { font-size:9px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:7px; font-weight:600; display:flex; align-items:center; gap:5px; }
+.sig-type.event{color:#6BAF9A} .sig-type.award{color:var(--gold)} .sig-type.milestone{color:#9A8ADF} .sig-type.alert{color:var(--red)}
+.sig-icon { font-size:11px; }
+.sig-text { font-size:13px; font-weight:600; color:#fff; line-height:1.35; margin-bottom:7px; }
+.sig-sub { font-size:11px; color:var(--slate); line-height:1.5; }
+.sig-meta { font-size:10px; color:rgba(122,154,184,.6); margin-top:9px; font-family:var(--ff-m); }
+
+/* ── REGIONAL — 3 col mobile ── */
+.regional-section { padding:0 0 48px; }
+.regional-inner { padding:0 16px; }
+.regional-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:16px; }
+.region-card { background:var(--navy2); border:1px solid rgba(200,146,42,.1); border-radius:3px; padding:10px 8px; text-align:center; cursor:pointer; }
+.region-card.active { border-color:var(--gold); background:rgba(200,146,42,.08); }
+.r-city { font-size:11px; font-weight:700; color:#fff; margin-bottom:2px; }
+.r-region { font-size:8px; color:var(--slate); }
+.r-count { font-size:9px; color:var(--gold); margin-top:5px; font-family:var(--ff-m); }
+
+/* ── FOUNDER BAND — stacked mobile ── */
+.founder-section { padding:0 0 48px; }
+.founder-inner { padding:0 16px; }
+.founder-band { background:var(--navy2); border:1px solid var(--border); border-radius:4px; padding:28px 20px; display:flex; flex-direction:column; gap:24px; margin-top:16px; position:relative; overflow:hidden; }
+.founder-band::before { display:none; }
+.fb-eyebrow { font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.fb-eyebrow::before { content:''; display:block; width:16px; height:1px; background:var(--gold); }
+.fb-headline { font-family:var(--ff-d); font-size:22px; font-weight:700; color:#fff; line-height:1.25; margin-bottom:12px; }
+.fb-headline em { color:var(--gold2); font-style:italic; }
+.fb-body { font-size:13px; line-height:1.7; color:rgba(226,216,200,.7); }
+.fb-stats { display:flex; flex-wrap:wrap; gap:16px; }
+.fb-stat { border-left:2px solid var(--gold); padding-left:14px; }
+.fb-stat-num { font-family:var(--ff-d); font-size:28px; font-weight:900; color:var(--gold); line-height:1; }
+.fb-stat-label { font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); margin-top:2px; }
+
+/* ── NEWSLETTER ── */
+.nl-section { padding:0 0 56px; }
+.nl-inner { padding:0 16px; text-align:center; }
+.nl-kicker { font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; justify-content:center; gap:8px; }
+.nl-kicker::before,.nl-kicker::after { content:''; display:block; width:20px; height:1px; background:var(--gold); opacity:.5; }
+.nl-headline { font-family:var(--ff-d); font-size:26px; font-weight:700; color:#fff; margin-bottom:10px; line-height:1.2; }
+.nl-sub { font-size:13px; color:rgba(226,216,200,.6); margin-bottom:22px; line-height:1.6; }
+.nl-form { display:flex; flex-direction:column; gap:8px; }
+.nl-input { width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(200,146,42,.2); border-radius:2px; padding:13px 16px; font-family:var(--ff-b); font-size:14px; color:#fff; outline:none; }
+.nl-input::placeholder { color:var(--slate); }
+.nl-btn { width:100%; background:var(--gold); color:var(--navy); font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:13px; border:none; border-radius:2px; cursor:pointer; font-family:var(--ff-b); }
+.nl-note { font-size:11px; color:var(--slate); margin-top:12px; }
+
+/* ── FOOTER ── */
+footer { border-top:1px solid var(--border); background:rgba(7,14,24,.8); padding:32px 0 20px; }
+.footer-inner { padding:0 16px; }
+.footer-top { display:flex; flex-direction:column; gap:24px; margin-bottom:28px; }
+.footer-brand .fw { font-family:var(--ff-d); font-size:17px; font-weight:900; color:#fff; }
+.footer-brand .ft { font-size:7.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-top:3px; }
+.footer-brand p { font-size:12px; color:var(--slate); margin-top:10px; line-height:1.6; }
+.footer-cols { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.footer-col h4 { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; font-weight:600; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-col ul li a { font-size:12px; color:var(--slate); }
+.footer-bottom { border-top:1px solid rgba(200,146,42,.08); padding-top:16px; display:flex; flex-direction:column; gap:6px; text-align:center; }
+.footer-copy { font-size:10px; color:rgba(122,154,184,.5); font-family:var(--ff-m); }
+.footer-tagline { font-family:var(--ff-d); font-size:11px; color:rgba(200,146,42,.4); font-style:italic; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.anim-1 { animation:fadeUp .7s ease both; }
+.anim-2 { animation:fadeUp .7s .15s ease both; }
+
+/* ══════════════════════════════════════════════════════
+   DESKTOP LAYOUT — only kicks in on real wide screens
+   ══════════════════════════════════════════════════════ */
+@media (min-width: 900px) {
+
+  .fire-banner-inner { max-width:1300px; margin:0 auto; padding:0 32px; height:44px; gap:20px; }
+  .fire-banner-cta { display:flex; }
+
+  .ticker-bar { height:30px; font-size:11px; }
+  .ticker-label { padding:0 14px; font-size:9px; }
+
+  .mast-inner { max-width:1300px; margin:0 auto; padding:0 32px; height:68px; display:grid; grid-template-columns:1fr auto 1fr; gap:24px; }
+  .nav-left { display:flex; align-items:center; gap:24px; }
+  .nav-left a,.nav-right a { font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); }
+  .nav-right a:not(.gcp-link):not(.btn-sub) { display:flex; }
+  .nav-right { gap:18px; }
+  .logo-block { text-align:center; flex:unset; }
+  .logo-word { font-size:20px; }
+  .logo-tag { font-size:7.5px; letter-spacing:.28em; }
+  .gcp-link { font-size:11px; padding:5px 12px; }
+  .gcp-link img { width:18px; height:18px; }
+  .btn-sub { font-size:10px; padding:7px 16px; }
+
+  .hero { min-height:82vh; display:flex; flex-direction:column; justify-content:flex-end; }
+  .hero-accent { display:block; position:absolute; top:0; right:0; width:520px; height:100%; background:linear-gradient(135deg,transparent 40%,rgba(200,146,42,.04) 100%); border-left:1px solid rgba(200,146,42,.08); z-index:1; }
+  .hero-eyebrow { position:absolute; top:48px; left:50%; transform:translateX(-50%); padding:0; }
+  .hero-date { font-size:10px; }
+  .hero-content { max-width:1300px; margin:0 auto; padding:120px 32px 0; display:grid; grid-template-columns:1fr 400px; gap:48px; align-items:end; flex-direction:unset; }
+  .hero-headline { font-size:clamp(44px,5vw,72px); margin-bottom:20px; }
+  .hero-deck { font-size:16px; }
+  .hero-actions { flex-direction:row; gap:14px; }
+  .btn-primary { justify-content:flex-start; }
+  .btn-secondary { text-align:left; }
+  .hero-trend-bar { display:block; position:relative; z-index:5; border-top:1px solid rgba(200,146,42,.1); margin-top:40px; }
+  .hero-trend-inner { max-width:1300px; margin:0 auto; padding:14px 32px; display:flex; gap:32px; align-items:center; }
+
+  .section-rule { padding:0 32px; max-width:1300px; margin:0 auto; }
+
+  .strip-inner { max-width:1300px; margin:0 auto; padding:20px 32px 0; }
+  .strip-grid { display:grid; grid-template-columns:repeat(4,1fr); flex-direction:unset; }
+  .strip-card { padding:22px 20px; }
+  .sc-hed { font-size:17px; }
+
+  .main-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .main-grid { display:grid; grid-template-columns:1fr 340px; gap:40px; flex-direction:unset; }
+
+  .feature-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; flex-direction:unset; }
+  .feature-card.big { grid-column:1/-1; }
+  .feature-card.big .fc-img { height:280px; }
+  .fc-img { height:200px; }
+  .fc-hed { font-size:18px; }
+  .feature-card.big .fc-hed { font-size:24px; }
+
+  .video-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .video-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; flex-direction:unset; }
+
+  .verticals-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .verticals-grid { grid-template-columns:repeat(5,1fr); }
+  .v-icon { font-size:32px; }
+  .vertical-card { padding:22px 18px; }
+
+  .signal-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .signal-grid { display:grid; grid-template-columns:repeat(4,1fr); flex-direction:unset; }
+
+  .regional-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .regional-grid { grid-template-columns:repeat(7,1fr); gap:10px; }
+  .r-city { font-size:12px; }
+  .region-card { padding:14px 12px; }
+
+  .founder-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .founder-band { display:grid; grid-template-columns:1fr auto; gap:48px; padding:40px 48px; flex-direction:unset; }
+  .founder-band::before { display:block; content:''; position:absolute; top:0; right:0; bottom:0; width:300px; background:linear-gradient(135deg,transparent,rgba(200,146,42,.04)); border-left:1px solid rgba(200,146,42,.08); }
+  .fb-headline { font-size:28px; }
+  .fb-stats { flex-direction:column; flex-wrap:unset; }
+  .fb-stat { border-left:none; border-right:2px solid var(--gold); padding-left:0; padding-right:20px; text-align:right; }
+  .fb-stat-num { font-size:36px; }
+
+  .nl-inner { max-width:700px; margin:0 auto; padding:0 32px; }
+  .nl-headline { font-size:32px; }
+  .nl-sub { font-size:14px; }
+  .nl-form { flex-direction:row; gap:10px; }
+  .nl-input { width:auto; flex:1; }
+  .nl-btn { width:auto; }
+
+  .footer-inner { max-width:1300px; margin:0 auto; padding:0 32px; }
+  .footer-top { flex-direction:unset; display:grid; grid-template-columns:200px 1fr 1fr 1fr; gap:48px; }
+  .footer-cols { display:contents; }
+  .footer-bottom { flex-direction:row; text-align:left; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── WILDFIRE EMERGENCY BANNER ── -->
+<div class="fire-banner">
+  <div class="fire-banner-inner">
+    <div class="fire-alert-badge">
+      <span class="fire-flame">🔥</span>
+      WILDFIRE EMERGENCY
+    </div>
+    <div class="fire-banner-text">
+      <div class="fire-banner-scroll">
+        <span class="fbs-item"><span class="fbs-label">874,489 acres burned statewide</span> — Largest wildfire event in Nebraska history</span>
+        <span class="fbs-item"><span class="fbs-label">Morrill Fire:</span> 643,000 acres — Now 100% contained · Morrill, Garden, Grant, Arthur & Keith Counties</span>
+        <span class="fbs-item"><span class="fbs-label">Ashby & Minor Fires:</span> 50,000+ acres in Grant County — Active suppression ongoing</span>
+        <span class="fbs-item"><span class="fbs-label">35,000+ cattle displaced</span> — Miles of fencing destroyed · Summer grazing not possible in burned areas</span>
+        <span class="fbs-item"><span class="fbs-label">Gov. Pillen</span> lifts statewide burn ban April 2 · State Emergency Operations Center active</span>
+        <span class="fbs-item"><span class="fbs-label">2026 breaks 2012 record</span> — Most acres burned by wildfire in Nebraska state history</span>
+        <!-- duplicate for seamless loop -->
+        <span class="fbs-item"><span class="fbs-label">874,489 acres burned statewide</span> — Largest wildfire event in Nebraska history</span>
+        <span class="fbs-item"><span class="fbs-label">Morrill Fire:</span> 643,000 acres — Now 100% contained · Morrill, Garden, Grant, Arthur & Keith Counties</span>
+        <span class="fbs-item"><span class="fbs-label">Ashby & Minor Fires:</span> 50,000+ acres in Grant County — Active suppression ongoing</span>
+        <span class="fbs-item"><span class="fbs-label">35,000+ cattle displaced</span> — Miles of fencing destroyed · Summer grazing not possible in burned areas</span>
+        <span class="fbs-item"><span class="fbs-label">Gov. Pillen</span> lifts statewide burn ban April 2 · State Emergency Operations Center active</span>
+        <span class="fbs-item"><span class="fbs-label">2026 breaks 2012 record</span> — Most acres burned by wildfire in Nebraska state history</span>
+      </div>
+    </div>
+    <a href="#wildfire-coverage" class="fire-banner-cta">Full Coverage →</a>
+  </div>
+</div>
+
+<!-- ── TICKER ── -->
+<div class="ticker-bar">
+  <div class="ticker-label">
+    <span class="t-dot"></span>
+    NE Markets
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ── -->
+<header class="masthead">
+  <div class="mast-inner">
+    <nav class="nav-left">
+      <a href="#">News</a>
+      <a href="#">Sports</a>
+      <a href="#">Agriculture</a>
+      <a href="#">Business</a>
+      <a href="#">Culture</a>
+    </nav>
+    <div class="logo-block">
+      <div class="logo-word">Backstory Nebraska</div>
+      <div class="logo-tag">Nebraska's Platform · Est. 2025</div>
+    </div>
+    <div class="nav-right">
+      <a href="#">Podcasts</a>
+      <a href="#">Contributors</a>
+      <a href="#">Events</a>
+      <a href="https://goosecreekpress.com/collections/products" target="_blank" class="gcp-link">
+        <img src="https://goosecreekpress.com/cdn/shop/files/Dogs.png?v=1700693817&width=80" alt="GCP" style="width:18px;height:18px;border-radius:50%;object-fit:cover;border:1px solid rgba(200,146,42,.4);background:#112640"> GCP Bookstore
+      </a>
+      <a class="btn-sub" href="#">Subscribe</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-eyebrow">
+    <span class="hero-date" id="hero-date"></span>
+    <span class="hero-divline"></span>
+    <span class="hero-date">Backstory Nebraska</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-lead anim-1">
+      <div class="hero-kicker" style="color:#FF6B35">🔥 Developing Story · Wildfire Emergency</div>
+      <h1 class="hero-headline">
+        The Morrill Fire:<br>
+        <em>Nebraska's Largest Wildfire on Record</em>
+      </h1>
+      <p class="hero-deck">The Morrill Fire is now the largest wildfire in Nebraska state history — 643,000 acres, 35,000 cattle displaced, miles of fencing gone, families evacuated with only photo albums. The burn ban is lifted. The recovery is just beginning. Backstory Nebraska is on the ground.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+        <div style="background:rgba(139,26,26,.3);border:1px solid rgba(255,107,53,.3);border-radius:3px;padding:10px 16px;display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:var(--ff-m);font-size:20px;font-weight:600;color:#FF6B35;line-height:1">874,489</span>
+          <span style="font-size:10px;color:rgba(226,216,200,.6);letter-spacing:.08em;text-transform:uppercase">Acres Burned</span>
+        </div>
+        <div style="background:rgba(139,26,26,.3);border:1px solid rgba(255,107,53,.3);border-radius:3px;padding:10px 16px;display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:var(--ff-m);font-size:20px;font-weight:600;color:#FF6B35;line-height:1">35,000+</span>
+          <span style="font-size:10px;color:rgba(226,216,200,.6);letter-spacing:.08em;text-transform:uppercase">Cattle Displaced</span>
+        </div>
+        <div style="background:rgba(139,26,26,.3);border:1px solid rgba(255,107,53,.3);border-radius:3px;padding:10px 16px;display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:var(--ff-m);font-size:20px;font-weight:600;color:#FF6B35;line-height:1">#1</span>
+          <span style="font-size:10px;color:rgba(226,216,200,.6);letter-spacing:.08em;text-transform:uppercase">Worst in NE History</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#wildfire-coverage" class="btn-primary" style="background:#C23B3B">Full Wildfire Coverage 🔥</a>
+        <a href="#" class="btn-secondary">How to Help →</a>
+      </div>
+    </div>
+
+      <div class="hero-sidebar anim-2">
+        <div class="breaking-box">
+          <div class="breaking-header">
+            <span class="breaking-dot"></span>
+            Breaking &amp; Developing
+          </div>
+          <div class="breaking-item">
+            <div class="b-cat" style="color:#FF6B35">🔥 Wildfire Emergency</div>
+            <div class="b-hed">Gov. Pillen Lifts Statewide Burn Ban — But Two Fires Still Active in Grant &amp; Phelps Counties</div>
+            <div class="b-time">Today · Apr 2, 2026</div>
+          </div>
+          <div class="breaking-item">
+            <div class="b-cat" style="color:#FF6B35">🔥 Morrill Fire</div>
+            <div class="b-hed">643,000 Acres. 100% Contained. The Largest Wildfire in Nebraska History Is Over — The Recovery Has Not Begun</div>
+            <div class="b-time">Morrill, Garden, Grant, Arthur &amp; Keith Counties</div>
+          </div>
+          <div class="breaking-item">
+            <div class="b-cat" style="color:#FF6B35">🐄 Ag Impact</div>
+            <div class="b-hed">35,000+ Cattle Displaced. Miles of Fencing Gone. Summer Grazing Impossible. Ranchers Face Years of Recovery.</div>
+            <div class="b-time">Sandhills · Ongoing</div>
+          </div>
+          <div class="breaking-item">
+            <div class="b-cat">📈 Business</div>
+            <div class="b-hed">Omaha Biotech Startup Closes $22M Series A, Eyes National Expansion</div>
+            <div class="b-time">2 hr ago</div>
+          </div>
+          <div class="breaking-item">
+            <div class="b-cat">🏈 Husker Sports</div>
+            <div class="b-hed">Jim Rose Signs with Goose Creek Press — The Voice of the Huskers Has a New Chapter</div>
+            <div class="b-time">Backstory Nebraska Exclusive</div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Hero bottom bar -->
+  <div style="position:relative;z-index:5;border-top:1px solid rgba(200,146,42,.1);margin-top:40px">
+    <div style="max-width:1300px;margin:0 auto;padding:14px 32px;display:flex;gap:32px;align-items:center">
+      <span style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate)">Trending Now</span>
+      <div style="display:flex;gap:20px;flex:1;overflow:hidden">
+        <a href="#" style="font-size:12px;color:rgba(226,216,200,.7);white-space:nowrap;transition:color .2s" onmouseover="this.style.color='#E0A83A'" onmouseout="this.style.color='rgba(226,216,200,.7)'">Sandhills Cattle Market Report →</a>
+        <a href="#" style="font-size:12px;color:rgba(226,216,200,.7);white-space:nowrap;transition:color .2s" onmouseover="this.style.color='#E0A83A'" onmouseout="this.style.color='rgba(226,216,200,.7)'">Creighton Basketball Makes Tournament →</a>
+        <a href="#" style="font-size:12px;color:rgba(226,216,200,.7);white-space:nowrap;transition:color .2s" onmouseover="this.style.color='#E0A83A'" onmouseout="this.style.color='rgba(226,216,200,.7)'">Nebraska Water Rights: The Battle Coming →</a>
+        <a href="#" style="font-size:12px;color:rgba(226,216,200,.7);white-space:nowrap;transition:color .2s" onmouseover="this.style.color='#E0A83A'" onmouseout="this.style.color='rgba(226,216,200,.7)'">Omaha's Restaurant Renaissance →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WILDFIRE COVERAGE SECTION ── -->
+<div id="wildfire-coverage" class="section-rule" style="margin-top:40px">
+  <div class="rule-inner">
+    <span class="rule-label" style="color:#FF6B35">🔥 Wildfire Emergency Coverage</span>
+    <a href="#" class="rule-more" style="color:#FF6B35">All Wildfire Stories</a>
+  </div>
+</div>
+<section style="padding:0 0 56px">
+  <div style="max-width:1300px;margin:0 auto;padding:24px 32px 0">
+
+    <!-- Fire stats bar -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.25);border-radius:4px;overflow:hidden;margin-bottom:20px">
+      <div style="background:#0f1e2e;padding:16px 18px;text-align:center">
+        <div style="font-family:var(--ff-m);font-size:22px;font-weight:700;color:#FF6B35;line-height:1">874,489</div>
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:4px">Acres Burned</div>
+      </div>
+      <div style="background:#0f1e2e;padding:16px 18px;text-align:center">
+        <div style="font-family:var(--ff-m);font-size:22px;font-weight:700;color:#FF6B35;line-height:1">4</div>
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:4px">Major Fires</div>
+      </div>
+      <div style="background:#0f1e2e;padding:16px 18px;text-align:center">
+        <div style="font-family:var(--ff-m);font-size:22px;font-weight:700;color:#FF6B35;line-height:1">35,000+</div>
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:4px">Cattle Displaced</div>
+      </div>
+      <div style="background:#0f1e2e;padding:16px 18px;text-align:center">
+        <div style="font-family:var(--ff-m);font-size:22px;font-weight:700;color:#4ABA6A;line-height:1">100%</div>
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:4px">Morrill Contained</div>
+      </div>
+      <div style="background:#0f1e2e;padding:16px 18px;text-align:center">
+        <div style="font-family:var(--ff-m);font-size:22px;font-weight:700;color:#FFB347;line-height:1">2</div>
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:4px">Still Active</div>
+      </div>
+    </div>
+
+    <!-- Fire story grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+
+      <!-- Lead fire story -->
+      <div style="grid-column:1/3;background:var(--navy2);border:1px solid rgba(255,107,53,.25);border-radius:4px;overflow:hidden;cursor:pointer;transition:all .25s" onmouseover="this.style.borderColor='rgba(255,107,53,.5)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,107,53,.25)';this.style.transform='none'">
+        <div style="height:220px;background:linear-gradient(135deg,#1a0a0a,#3a1010,#2a0808);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <div style="font-family:var(--ff-d);font-size:80px;font-weight:900;color:rgba(255,107,53,.07);letter-spacing:-.02em;text-align:center;line-height:1">SANDHILLS</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,30,46,.9) 0%,transparent 60%)"></div>
+          <div style="position:absolute;top:14px;left:16px;background:rgba(194,59,59,.9);font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;padding:4px 10px;border-radius:2px;display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:#fff;animation:blink 1s infinite;display:block"></span>Developing</div>
+        </div>
+        <div style="padding:20px 24px 22px">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#FF6B35;margin-bottom:10px;font-weight:600">🔥 On the Ground · Sandhills</div>
+          <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;line-height:1.2;color:#fff;margin-bottom:10px">'We Would Have Lost Everything': Nebraska Ranchers Describe the Night the Morrill Fire Came for Their Homes</div>
+          <div style="font-size:13px;line-height:1.65;color:rgba(226,216,200,.65);margin-bottom:14px">Mike Wintz was four miles away fighting the fire when he heard on the radio it was headed for his ranch. What happened next is one story of thousands from the worst wildfire season in Nebraska history. The Morrill Fire burned 643,000 acres — the largest single fire ever recorded in the state — before being fully contained. Two fires are still active tonight.</div>
+          <div style="font-size:10px;color:var(--slate);font-family:var(--ff-m)"><span style="color:#FF6B35">Backstory Nebraska</span> · Apr 2, 2026 · 16 min read</div>
+        </div>
+      </div>
+
+      <!-- Secondary fire stories -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:var(--navy2);border:1px solid rgba(255,107,53,.2);border-radius:4px;padding:18px;cursor:pointer;transition:all .2s;flex:1" onmouseover="this.style.borderColor='rgba(255,107,53,.4)'" onmouseout="this.style.borderColor='rgba(255,107,53,.2)'">
+          <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#FF6B35;margin-bottom:8px;font-weight:600">🐄 Agriculture</div>
+          <div style="font-family:var(--ff-d);font-size:16px;font-weight:700;line-height:1.3;color:#fff;margin-bottom:8px">35,000 Cattle, Nowhere to Graze. The Ag Toll of Nebraska's Historic Wildfire Season.</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(226,216,200,.6);margin-bottom:10px">Fencing that took generations to build is gone. Summer grazing in burned Sandhills is off the table. A UNL ecologist warns: graze too early, destroy the root systems entirely.</div>
+          <div style="font-size:10px;color:var(--slate);font-family:var(--ff-m)">14 min read</div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid rgba(255,107,53,.2);border-radius:4px;padding:18px;cursor:pointer;transition:all .2s;flex:1" onmouseover="this.style.borderColor='rgba(255,107,53,.4)'" onmouseout="this.style.borderColor='rgba(255,107,53,.2)'">
+          <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#FFB347;margin-bottom:8px;font-weight:600">🌡 Climate</div>
+          <div style="font-family:var(--ff-d);font-size:16px;font-weight:700;line-height:1.3;color:#fff;margin-bottom:8px">'A New Era.' UNL Scientists Say Nebraska's Wildfire Future Just Changed Forever.</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(226,216,200,.6);margin-bottom:10px">The second-warmest winter on record set the stage. 2026 already breaks the 2012 acres-burned record with months to go. This is not a one-off.</div>
+          <div style="font-size:10px;color:var(--slate);font-family:var(--ff-m)">11 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to help bar -->
+    <div style="margin-top:16px;background:linear-gradient(90deg,rgba(42,107,74,.2),rgba(42,107,74,.1));border:1px solid rgba(42,107,74,.3);border-radius:3px;padding:14px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#5BAF8A;white-space:nowrap">💚 How to Help</div>
+      <div style="font-size:12px;color:rgba(226,216,200,.8);flex:1">Donate to wildfire relief, find displaced livestock resources, or connect ranchers with fencing assistance.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.nda.nebraska.gov" target="_blank" style="font-size:11px;font-weight:600;color:#5BAF8A;border:1px solid rgba(91,175,138,.3);padding:6px 14px;border-radius:2px;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(91,175,138,.1)'" onmouseout="this.style.background='transparent'">NE Dept. of Agriculture →</a>
+        <a href="#" style="font-size:11px;font-weight:600;color:#5BAF8A;border:1px solid rgba(91,175,138,.3);padding:6px 14px;border-radius:2px;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(91,175,138,.1)'" onmouseout="this.style.background='transparent'">NE Livestock Relief Fund →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTENT STRIP: Today's Top Stories ── -->
+<div class="section-rule">
+  <div class="rule-inner">
+    <span class="rule-label">Today's Top Stories</span>
+    <a href="#" class="rule-more">All Stories</a>
+  </div>
+</div>
+<section class="content-strip">
+  <div class="strip-inner">
+    <div class="strip-grid">
+      <div class="strip-card">
+        <div class="sc-cat">🌽 Agriculture</div>
+        <div class="sc-hed">The Pivot Irrigator That Changed Everything — And the Nebraska Family Who Built It</div>
+        <div class="sc-deck">A deep-dive into center pivot irrigation's Nebraska roots and what's next for the Sandhills water table.</div>
+        <div class="sc-meta"><span class="fc-author">Wade Pollock</span><span class="sc-dot"></span><span>8 min read</span></div>
+      </div>
+      <div class="strip-card">
+        <div class="sc-cat">🏈 Husker Sports</div>
+        <div class="sc-hed">What 50 Years of Husker Radio Sounds Like: A Conversation with Jim Rose</div>
+        <div class="sc-deck">The voice behind the memories sits down with Backstory Nebraska to talk football, the state he loves, and what comes next.</div>
+        <div class="sc-meta"><span class="fc-author">GCP Staff</span><span class="sc-dot"></span><span>12 min read</span></div>
+      </div>
+      <div class="strip-card">
+        <div class="sc-cat">💼 Business</div>
+        <div class="sc-hed">Omaha's Startup Scene Is Quietly Becoming One of the Best in the Midwest</div>
+        <div class="sc-deck">Venture activity, talent retention, and why founders are choosing the Missouri River over both coasts.</div>
+        <div class="sc-meta"><span class="fc-author">Sarah Kimmel</span><span class="sc-dot"></span><span>6 min read</span></div>
+      </div>
+      <div class="strip-card">
+        <div class="sc-cat">🎨 Culture</div>
+        <div class="sc-hed">Nebraska's Literary Renaissance: The Writers Putting the Plains Back on the Map</div>
+        <div class="sc-deck">From Willa Cather's ghost to a new generation of voices — Nebraska literature is having a moment.</div>
+        <div class="sc-meta"><span class="fc-author">Mary Hendricks</span><span class="sc-dot"></span><span>9 min read</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN GRID: Features + Sidebar ── -->
+<div class="section-rule">
+  <div class="rule-inner">
+    <span class="rule-label">Featured Stories</span>
+    <a href="#" class="rule-more">All Features</a>
+  </div>
+</div>
+<section class="main-section">
+  <div class="main-inner">
+    <div class="main-grid">
+
+      <!-- Feature cards -->
+      <div class="feature-grid">
+        <div class="feature-card big">
+          <div class="fc-img">
+            <div class="fc-img-label">SANDHILLS</div>
+            <div class="fc-overlay"></div>
+          </div>
+          <div class="fc-body">
+            <div class="fc-cat outdoors">🦌 Outdoors & Land</div>
+            <div class="fc-hed">The Sandhills: America's Last Great Wilderness Nobody Talks About</div>
+            <div class="fc-deck">Nineteen thousand square miles of grass-stabilized dunes, the world's largest underground aquifer, and a way of life that hasn't changed in 100 years. A Backstory Nebraska long read.</div>
+            <div class="fc-meta"><span class="fc-author">Tom Bridger</span><span class="by-dot"></span><span>18 min read</span><span class="by-dot"></span><span>Photography Essay</span></div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-img" style="height:150px">
+            <div class="fc-img-label" style="font-size:32px">HUSKERS</div>
+            <div class="fc-overlay"></div>
+          </div>
+          <div class="fc-body">
+            <div class="fc-cat sports">🏈 Husker Sports</div>
+            <div class="fc-hed">The Mythology of Memorial Stadium: Why Nebraska Football Is Unlike Anything Else</div>
+            <div class="fc-meta"><span class="fc-author">Jim Rose</span><span class="by-dot"></span><span>11 min read</span></div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-img" style="height:150px">
+            <div class="fc-img-label" style="font-size:32px">AG</div>
+            <div class="fc-overlay"></div>
+          </div>
+          <div class="fc-body">
+            <div class="fc-cat ag">🌾 Agriculture</div>
+            <div class="fc-hed">The Rancher Who Refused to Sell: Three Generations of Nebraska Land Story</div>
+            <div class="fc-meta"><span class="fc-author">Dale Brunner</span><span class="by-dot"></span><span>14 min read</span></div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-img" style="height:150px">
+            <div class="fc-img-label" style="font-size:32px">OMAHA</div>
+            <div class="fc-overlay"></div>
+          </div>
+          <div class="fc-body">
+            <div class="fc-cat biz">📈 Business</div>
+            <div class="fc-hed">Berkshire, Mutual of Omaha, and the Insurance Capital the World Forgot It Built</div>
+            <div class="fc-meta"><span class="fc-author">Lisa Crane</span><span class="by-dot"></span><span>10 min read</span></div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-img" style="height:150px">
+            <div class="fc-img-label" style="font-size:32px">ARTS</div>
+            <div class="fc-overlay"></div>
+          </div>
+          <div class="fc-body">
+            <div class="fc-cat culture">🎭 Culture</div>
+            <div class="fc-hed">Joslyn Art Museum Is One of the Best in the Country — Ask Anyone Who's Been There</div>
+            <div class="fc-meta"><span class="fc-author">Anne Park</span><span class="by-dot"></span><span>7 min read</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- Contributors -->
+        <div class="sidebar-module">
+          <div class="sm-header">
+            <span class="sm-title"><span class="sm-title-icon">⭐</span> Contributors</span>
+            <a href="#" class="sm-link">View All →</a>
+          </div>
+          <div class="contributor-list">
+            <div class="contributor-item">
+              <div class="contrib-avatar">JR</div>
+              <div class="contrib-info">
+                <div class="contrib-name">Jim Rose</div>
+                <div class="contrib-role">Sports &amp; Culture · Omaha</div>
+              </div>
+              <span class="contrib-tag tag-featured">Featured</span>
+            </div>
+            <div class="contributor-item">
+              <div class="contrib-avatar" style="background:linear-gradient(135deg,#1a3a1a,#2a6b4a)">WP</div>
+              <div class="contrib-info">
+                <div class="contrib-name">Wade Pollock</div>
+                <div class="contrib-role">Agriculture · Sandhills</div>
+              </div>
+              <span class="contrib-tag tag-new">Author</span>
+            </div>
+            <div class="contributor-item">
+              <div class="contrib-avatar" style="background:linear-gradient(135deg,#2a1a3a,#5a2a7a)">MH</div>
+              <div class="contrib-info">
+                <div class="contrib-name">Mary Hendricks</div>
+                <div class="contrib-role">Literature &amp; Arts · Lincoln</div>
+              </div>
+              <span class="contrib-tag tag-live">Live</span>
+            </div>
+            <div class="contributor-item">
+              <div class="contrib-avatar" style="background:linear-gradient(135deg,#1a2a3a,#2a5a7a)">SK</div>
+              <div class="contrib-info">
+                <div class="contrib-name">Sarah Kimmel</div>
+                <div class="contrib-role">Business &amp; Tech · Omaha</div>
+              </div>
+              <span class="contrib-tag tag-new">New</span>
+            </div>
+            <div class="contributor-item">
+              <div class="contrib-avatar" style="background:linear-gradient(135deg,#3a2a0a,#6b4a1a)">TB</div>
+              <div class="contrib-info">
+                <div class="contrib-name">Tom Bridger</div>
+                <div class="contrib-role">Outdoors &amp; Land · N. Platte</div>
+              </div>
+              <span class="contrib-tag tag-featured">Writer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Podcasts -->
+        <div class="sidebar-module">
+          <div class="sm-header">
+            <span class="sm-title"><span class="sm-title-icon">🎙</span> Latest Podcasts</span>
+            <a href="#" class="sm-link">All Shows →</a>
+          </div>
+          <div class="podcast-list">
+            <div class="podcast-item">
+              <div class="pod-art sports">🏈</div>
+              <div class="pod-info">
+                <div class="pod-show">The Rose Report</div>
+                <div class="pod-ep">Ep. 12 — Spring Ball &amp; What This Team Can Be</div>
+                <div class="pod-dur">48:22</div>
+              </div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="podcast-item">
+              <div class="pod-art ag">🌽</div>
+              <div class="pod-info">
+                <div class="pod-show">Between the Rows</div>
+                <div class="pod-ep">Ep. 8 — Water Wars: The Ogallala Aquifer Crisis</div>
+                <div class="pod-dur">1:02:15</div>
+              </div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="podcast-item">
+              <div class="pod-art biz">📊</div>
+              <div class="pod-info">
+                <div class="pod-show">Plains Business</div>
+                <div class="pod-ep">Ep. 5 — The Omaha Advantage: Why Talent Is Staying</div>
+                <div class="pod-dur">38:44</div>
+              </div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="podcast-item">
+              <div class="pod-art culture">🎭</div>
+              <div class="pod-info">
+                <div class="pod-show">Nebraska Story</div>
+                <div class="pod-ep">Ep. 3 — Willa Cather, Then and Now</div>
+                <div class="pod-dur">51:08</div>
+              </div>
+              <div class="play-btn">▶</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nebraska Market Signals -->
+        <div class="sidebar-module">
+          <div class="sm-header">
+            <span class="sm-title"><span class="sm-title-icon">📈</span> Nebraska Signals</span>
+            <a href="#" class="sm-link">Full Data →</a>
+          </div>
+          <div class="market-list" id="market-list">
+            <!-- filled by JS -->
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO ROW ── -->
+<div class="section-rule">
+  <div class="rule-inner">
+    <span class="rule-label">Watch Now · Recently Uploaded</span>
+    <a href="#" class="rule-more">YouTube Channel</a>
+  </div>
+</div>
+<section class="video-section">
+  <div class="video-inner">
+    <div class="video-row">
+      <div class="video-card">
+        <div class="vc-thumb">
+          <div class="vc-thumb-label">HUSKERS</div>
+          <div class="vc-play">▶</div>
+          <div class="vc-duration">12:44</div>
+          <div class="vc-platform">YouTube</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-cat">🏈 Husker Sports</div>
+          <div class="vc-title">Jim Rose: My Favorite Call in 18 Years Behind the Mic</div>
+          <div class="vc-meta">Jim Rose · 3 days ago · 12.4K views</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#0a1a0a,#1a3a1a)">
+          <div class="vc-thumb-label">SANDHILLS</div>
+          <div class="vc-play">▶</div>
+          <div class="vc-duration">28:17</div>
+          <div class="vc-platform">YouTube</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-cat">🌾 Land & Outdoors</div>
+          <div class="vc-title">24 Hours on a Nebraska Sandhills Ranch — A Visual Journey</div>
+          <div class="vc-meta">Tom Bridger · 1 week ago · 8.7K views</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#1a100a,#3a2a0a)">
+          <div class="vc-thumb-label">OMAHA</div>
+          <div class="vc-play">▶</div>
+          <div class="vc-duration">19:03</div>
+          <div class="vc-platform">YouTube</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-cat">💼 Business</div>
+          <div class="vc-title">Omaha's Billion-Dollar Neighborhood: The Midtown Renaissance Nobody Expected</div>
+          <div class="vc-meta">Sarah Kimmel · 5 days ago · 6.2K views</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VERTICALS ── -->
+<div class="section-rule" style="margin-top:12px">
+  <div class="rule-inner">
+    <span class="rule-label">Explore by Vertical</span>
+    <a href="#" class="rule-more">All Verticals</a>
+  </div>
+</div>
+<section class="verticals-section">
+  <div class="verticals-inner">
+    <div class="verticals-grid">
+      <div class="vertical-card vc-ag">
+        <span class="v-icon">🌽</span>
+        <div class="v-name">Agriculture</div>
+        <div class="v-count">47 stories · 3 podcasts</div>
+        <div class="v-tags">
+          <span class="v-tag">Crops</span><span class="v-tag">Ranching</span><span class="v-tag">Water</span><span class="v-tag">Markets</span>
+        </div>
+      </div>
+      <div class="vertical-card vc-sports">
+        <span class="v-icon">🏈</span>
+        <div class="v-name">Husker Sports</div>
+        <div class="v-count">112 stories · 5 podcasts</div>
+        <div class="v-tags">
+          <span class="v-tag">Football</span><span class="v-tag">Volleyball</span><span class="v-tag">History</span><span class="v-tag">Recruiting</span>
+        </div>
+      </div>
+      <div class="vertical-card vc-biz">
+        <span class="v-icon">📈</span>
+        <div class="v-name">Business</div>
+        <div class="v-count">38 stories · 2 podcasts</div>
+        <div class="v-tags">
+          <span class="v-tag">Startups</span><span class="v-tag">Finance</span><span class="v-tag">Development</span>
+        </div>
+      </div>
+      <div class="vertical-card vc-culture">
+        <span class="v-icon">🎨</span>
+        <div class="v-name">Culture &amp; Arts</div>
+        <div class="v-count">29 stories · 2 podcasts</div>
+        <div class="v-tags">
+          <span class="v-tag">Literature</span><span class="v-tag">Music</span><span class="v-tag">History</span>
+        </div>
+      </div>
+      <div class="vertical-card vc-outdoors">
+        <span class="v-icon">🦌</span>
+        <div class="v-name">Outdoors</div>
+        <div class="v-count">24 stories · 1 podcast</div>
+        <div class="v-tags">
+          <span class="v-tag">Sandhills</span><span class="v-tag">Hunting</span><span class="v-tag">Conservation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY SIGNALS ── -->
+<div class="section-rule">
+  <div class="rule-inner">
+    <span class="rule-label">Nebraska Signal · Community &amp; Events</span>
+    <a href="#" class="rule-more">Submit a Signal</a>
+  </div>
+</div>
+<section class="signal-section">
+  <div class="signal-inner">
+    <div class="signal-grid">
+      <div class="signal-card" style="border-color:rgba(255,107,53,.25)">
+        <div class="sig-type alert"><span class="sig-icon">🔥</span> Recovery</div>
+        <div class="sig-text">Nebraska Wildfire Recovery Fund — Ranchers &amp; Families Need Help Now</div>
+        <div class="sig-sub">874,000+ acres burned. Fence replacement alone will take years. Donate, volunteer, or connect displaced ranchers with resources.</div>
+        <div class="sig-meta">Statewide · Active Emergency</div>
+      </div>
+      <div class="signal-card">
+        <div class="sig-type award"><span class="sig-icon">🏆</span> Award</div>
+        <div class="sig-text">Omaha World-Herald Veteran Reporter Wins National Investigative Journalism Prize</div>
+        <div class="sig-sub">40 years at one paper. One story that changed the state.</div>
+        <div class="sig-meta">Omaha · Nebraska Press Association</div>
+      </div>
+      <div class="signal-card">
+        <div class="sig-type milestone"><span class="sig-icon">🌟</span> Milestone</div>
+        <div class="sig-text">University of Nebraska Enrollment Surpasses 30,000 for First Time in Decade</div>
+        <div class="sig-sub">Record freshman class, highest retention rate since 2014, and a new ag innovation building breaks ground.</div>
+        <div class="sig-meta">Lincoln · University of Nebraska–Lincoln</div>
+      </div>
+      <div class="signal-card">
+        <div class="sig-type alert"><span class="sig-icon">⚠️</span> Watch</div>
+        <div class="sig-text">Western Nebraska Water Rights Dispute Heads to State Supreme Court</div>
+        <div class="sig-sub">A decades-long battle over Ogallala Aquifer access reaches its most critical juncture yet.</div>
+        <div class="sig-meta">Scottsbluff · In Progress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REGIONAL BUREAUS ── -->
+<div class="section-rule">
+  <div class="rule-inner">
+    <span class="rule-label">Regional Bureaus</span>
+    <a href="#" class="rule-more">Full Map</a>
+  </div>
+</div>
+<section class="regional-section">
+  <div class="regional-inner">
+    <div class="regional-grid">
+      <div class="region-card active">
+        <div class="r-city">Omaha</div>
+        <div class="r-region">Eastern NE</div>
+        <div class="r-count">48 stories</div>
+      </div>
+      <div class="region-card">
+        <div class="r-city">Lincoln</div>
+        <div class="r-region">Capitol</div>
+        <div class="r-count">36 stories</div>
+      </div>
+      <div class="region-card">
+        <div class="r-city">Grand Island</div>
+        <div class="r-region">Central NE</div>
+        <div class="r-count">21 stories</div>
+      </div>
+      <div class="region-card">
+        <div class="r-city">Kearney</div>
+        <div class="r-region">Platte Valley</div>
+        <div class="r-count">17 stories</div>
+      </div>
+      <div class="region-card">
+        <div class="r-city">N. Platte</div>
+        <div class="r-region">Southwest</div>
+        <div class="r-count">14 stories</div>
+      </div>
+      <div class="region-card">
+        <div class="r-city">Scottsbluff</div>
+        <div class="r-region">Panhandle</div>
+        <div class="r-count">11 stories</div>
+      </div>
+      <div class="region-card">
+        <div class="r-city">Norfolk</div>
+        <div class="r-region">Northeast NE</div>
+        <div class="r-count">9 stories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER / HERITAGE BAND ── -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-band">
+      <div>
+        <div class="fb-eyebrow">Our Story</div>
+        <div class="fb-headline">Four Generations.<br><em>One Nebraska Platform.</em></div>
+        <div class="fb-body">The Pollock family has been in Nebraska press since before most of today's media companies existed. From the Nebraska Farmer Magazine to the Keith County News — inducted into the Nebraska Journalism Hall of Fame — to Goose Creek Press, our publishing company, and now <strong style="color:#E2D8C8">Backstory Nebraska</strong>. This isn't a startup. It's a continuation. Nebraska's stories deserve a platform built to last another hundred years.</div>
+        <div style="margin-top:20px;display:flex;gap:14px">
+          <a href="https://goosecreekpress.com/collections/products" target="_blank" style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,146,42,.3);padding:9px 18px;border-radius:2px;transition:all .2s;display:inline-flex;align-items:center;gap:8px">
+            <img src="https://goosecreekpress.com/cdn/shop/files/Dogs.png?v=1700693817&width=80" alt="GCP" style="width:20px;height:20px;border-radius:50%;object-fit:cover;border:1px solid rgba(200,146,42,.35);background:#112640"> Shop Goose Creek Press Books</a>
+          <a href="#" style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);border:1px solid rgba(122,154,184,.2);padding:9px 18px;border-radius:2px;transition:all .2s">Become a Contributor →</a>
+        </div>
+      </div>
+      <div class="fb-stats">
+        <div class="fb-stat">
+          <div class="fb-stat-num">4</div>
+          <div class="fb-stat-label">Generations in NE Press</div>
+        </div>
+        <div class="fb-stat">
+          <div class="fb-stat-num">1859</div>
+          <div class="fb-stat-label">Nebraska Farmer Founded</div>
+        </div>
+        <div class="fb-stat">
+          <div class="fb-stat-num">130+</div>
+          <div class="fb-stat-label">NE Journalism Hall Inductees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section class="nl-section">
+  <div class="nl-inner">
+    <div class="nl-kicker">Stay in the Loop</div>
+    <div class="nl-headline">The Nebraska Briefing</div>
+    <div class="nl-sub">Every morning. The stories, signals, and conversations that matter in Nebraska — curated by Backstory Nebraska contributors. Free, always.</div>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="your@email.com">
+      <button class="nl-btn">Subscribe Free</button>
+    </div>
+    <div class="nl-note">No spam. One great email. Unsubscribe any time.</div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fw">Backstory Nebraska</div>
+        <div class="ft">Nebraska's Platform</div>
+        <p>The trusted source for Nebraska stories, voices, and community — built by a family four generations deep in Nebraska press.</p>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(200,146,42,.12)">
+          <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);margin-bottom:10px">Publishing Arm</div>
+          <a href="https://goosecreekpress.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+            <img src="https://goosecreekpress.com/cdn/shop/files/Dogs.png?v=1700693817&width=120" alt="Goose Creek Press" style="width:44px;height:44px;object-fit:cover;border-radius:50%;border:1.5px solid rgba(200,146,42,.35);background:#112640">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--gold);line-height:1">Goose Creek Press</div>
+              <div style="font-size:10px;color:var(--slate);margin-top:2px">Books · Publishing · Nebraska Authors</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Coverage</h4>
+        <ul>
+          <li><a href="#">Agriculture &amp; Land</a></li>
+          <li><a href="#">Husker Sports</a></li>
+          <li><a href="#">Business &amp; Economy</a></li>
+          <li><a href="#">Culture &amp; Arts</a></li>
+          <li><a href="#">Outdoors &amp; Wildlife</a></li>
+          <li><a href="#">Community Signals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">Podcast Network</a></li>
+          <li><a href="#">YouTube Channel</a></li>
+          <li><a href="https://goosecreekpress.com/collections/products" target="_blank">📚 GCP Bookstore</a></li>
+          <li><a href="#">Events &amp; Experiences</a></li>
+          <li><a href="#">Contributors</a></li>
+          <li><a href="#">The Nebraska Briefing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Become a Contributor</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Partner With Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Backstory Nebraska · A <a href="https://goosecreekpress.com" target="_blank" style="color:var(--gold);opacity:.7">Goose Creek Press</a> Platform. All rights reserved.</div>
+      <div class="footer-tagline">"Every story has a home. This is Nebraska's."</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Force correct mobile viewport when opened from iMessage/links
+(function() {
+  var mv = document.querySelector('meta[name="viewport"]');
+  if (mv) mv.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover');
+})();
+</script>
+<script>
+// ── SET DATE ──
+const d = new Date();
+document.getElementById('hero-date').textContent = d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+// ── TICKER DATA ──
+const tickers = [
+  {sym:'BRK.A', name:'Berkshire', val:'$641,200', chg:'+1.2%', up:true},
+  {sym:'AGR.NE', name:'NE Ag Index', val:'$148.44', chg:'+0.8%', up:true},
+  {sym:'CORN', name:'Corn Futures', val:'$4.82/bu', chg:'-0.4%', up:false},
+  {sym:'CATTLE', name:'Live Cattle', val:'$1.84/lb', chg:'+1.1%', up:true},
+  {sym:'WHEAT', name:'Winter Wheat', val:'$5.21/bu', chg:'+0.6%', up:true},
+  {sym:'HUSKERS', name:'Season Tickets', val:'$0 Available', chg:'Sellout', up:true},
+  {sym:'SOY', name:'Soybean', val:'$9.77/bu', chg:'-0.2%', up:false},
+  {sym:'OWH', name:'OWH Digital', val:'+14K subs', chg:'Q1 2025', up:true},
+  {sym:'NE.GDP', name:'NE Economy', val:'$136.4B', chg:'+2.8% YoY', up:true},
+  {sym:'HOGS', name:'Lean Hogs', val:'$0.88/lb', chg:'-0.7%', up:false},
+  {sym:'DAIRY', name:'Class III Milk', val:'$17.40/cwt', chg:'+0.3%', up:true},
+  {sym:'UNOGAS', name:'NE Gas Avg', val:'$3.12/gal', chg:'-0.05', up:false},
+];
+
+function buildTicker() {
+  const track = document.getElementById('ticker');
+  // double for seamless loop
+  const items = [...tickers, ...tickers];
+  track.innerHTML = items.map(t => `
+    <span class="t-item">
+      <span class="t-sym">${t.sym}</span>
+      <span class="t-name">${t.name}</span>
+      <span class="t-val">${t.val}</span>
+      <span class="t-chg ${t.up ? 'up' : 'dn'}">${t.chg}</span>
+      <span class="t-divider">|</span>
+    </span>
+  `).join('');
+}
+buildTicker();
+
+// ── MARKET SIGNALS SIDEBAR ──
+const signals = [
+  {sym:'CORN', name:'Corn Futures', val:'$4.82', chg:'-0.4%', up:false},
+  {sym:'CATTLE', name:'Live Cattle', val:'$1.84/lb', chg:'+1.1%', up:true},
+  {sym:'BRK.A', name:'Berkshire Hathaway', val:'$641.2K', chg:'+1.2%', up:true},
+  {sym:'SOY', name:'Soybeans', val:'$9.77/bu', chg:'-0.2%', up:false},
+  {sym:'WHEAT', name:'Winter Wheat', val:'$5.21/bu', chg:'+0.6%', up:true},
+];
+const ml = document.getElementById('market-list');
+ml.innerHTML = signals.map(s => `
+  <div class="market-item">
+    <div class="mkt-left">
+      <div class="mkt-sym">${s.sym}</div>
+      <div class="mkt-name">${s.name}</div>
+    </div>
+    <div class="mkt-right">
+      <div class="mkt-val">${s.val}</div>
+      <div class="mkt-chg ${s.up ? 'up' : 'dn'}">${s.chg}</div>
+    </div>
+  </div>
+`).join('');
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.strip-card,.feature-card,.video-card,.vertical-card,.signal-card,.region-card,.sidebar-module').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
